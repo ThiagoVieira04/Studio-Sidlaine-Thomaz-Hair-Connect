@@ -109,14 +109,6 @@
                     </div>
                 </button>
 
-                <button class="link-button wifi-btn" data-action="wifi-modal" role="listitem" aria-label="WiFi Grátis - Conecte-se à rede">
-                    <div class="button-icon"><i class="fas fa-wifi" aria-hidden="true"></i></div>
-                    <div class="button-content">
-                        <h3>WiFi Grátis</h3>
-                        <p>Conecte-se à rede</p>
-                    </div>
-                </button>
-
                 <div class="services-header" id="servicesHeader" role="button" tabindex="0" aria-expanded="false" aria-controls="servicesBody">
                     <img src="assets/img/serviço.gif" alt="" class="services-header-icon" aria-hidden="true">
                     <h2 class="services-title">Nossos Serviços</h2>
@@ -140,8 +132,16 @@
                     </div>
                 </div>
 
+                <button class="link-button bio-btn" data-action="bio-modal" role="listitem" aria-label="Biografia - Conheça minha história">
+                    <div class="button-icon"><img src="assets/img/bio.gif" alt="" class="button-icon-img" aria-hidden="true"></div>
+                    <div class="button-content">
+                        <h3>Biografia</h3>
+                        <p>Conheça minha história</p>
+                    </div>
+                </button>
+
                 <div class="testimonials-header" id="testimonialsHeader" role="button" tabindex="0" aria-expanded="false" aria-controls="testimonialsBody">
-                    <i class="fas fa-comment-dots testimonials-header-icon" aria-hidden="true"></i>
+                    <img src="assets/img/depo.gif" alt="" class="testimonials-header-icon" aria-hidden="true">
                     <h2 class="testimonials-title">Depoimentos</h2>
                     <i class="fas fa-chevron-down testimonials-arrow" id="testimonialsArrow" aria-hidden="true"></i>
                 </div>
@@ -153,6 +153,22 @@
                         <div class="catalog-dots" id="testimonialsDots" role="tablist" aria-label="Navegação do carrossel de depoimentos"></div>
                     </div>
                 </div>
+
+                <button class="link-button wifi-btn" data-action="wifi-modal" role="listitem" aria-label="WiFi Grátis - Conecte-se à rede">
+                    <div class="button-icon"><i class="fas fa-wifi" aria-hidden="true"></i></div>
+                    <div class="button-content">
+                        <h3>WiFi Grátis</h3>
+                        <p>Conecte-se à rede</p>
+                    </div>
+                </button>
+
+                <button class="link-button qrcode-btn" data-action="qrcode-modal" role="listitem" aria-label="QR Code - Compartilhe nossa pagina">
+                    <div class="button-icon"><i class="fas fa-qrcode" aria-hidden="true"></i></div>
+                    <div class="button-content">
+                        <h3>QR Code</h3>
+                        <p>Compartilhe nossa pagina</p>
+                    </div>
+                </button>
             </div>
         </section>
 
@@ -251,6 +267,26 @@
             <button class="action-btn" id="connectWifiBtn">
                 <i class="fas fa-wifi"></i> Conectar Agora
             </button>
+        </div>
+    </div>
+
+    <!-- Modal: Biografia -->
+    <div class="modal bio-modal" id="bioModal" role="dialog" aria-modal="true" aria-labelledby="bioModalTitle">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Fechar modal">&times;</button>
+            <h2 id="bioModalTitle">Sidlaine Thomaz</h2>
+            <div class="bio-text">
+                <p class="bio-lead">Uma mulher, uma profissional e um sonho que virou negócio.</p>
+                <p>Minha história na beleza nasceu do amor por transformar não apenas cabelos, mas também a autoestima das mulheres.</p>
+                <p>Ao longo da minha trajetória, fui construindo minha experiência, aperfeiçoando meu trabalho e entendendo que ser profissional da beleza vai muito além de fazer um cabelo bonito. É ouvir, cuidar, acolher e fazer cada cliente sair do salão se sentindo ainda mais bonita e confiante.</p>
+                <p>O que começou como um sonho foi ganhando forma, identidade e propósito até se transformar no Studio Thomaz Hair, um espaço que representa muito mais do que um salão: representa minha independência, minha dedicação e tudo aquilo que venho construindo com esforço.</p>
+                <p>Cada atendimento, cada cliente e cada transformação fazem parte dessa história. E por trás de cada resultado existe uma mulher que trabalha, aprende, enfrenta desafios e continua acreditando no próprio potencial.</p>
+                <p>Hoje, olho para tudo que construí com orgulho, mas também com a certeza de que ainda existe muito para conquistar.</p>
+                <p class="bio-signature">Studio Thomaz Hair é o resultado de um sonho que eu decidi levar a sério.</p>
+            </div>
+            <a class="action-btn bio-cta" href="https://wa.me/5521988593392?text=Ol%C3%A1%2C%20Sidlaine%21%20Li%20sua%20hist%C3%B3ria%20e%20quero%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i> Agendar meu horário
+            </a>
         </div>
     </div>
 

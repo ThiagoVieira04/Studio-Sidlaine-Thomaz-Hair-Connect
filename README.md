@@ -1,67 +1,89 @@
-# Papel e Sonhos Connect
+# Studio Sidlaine Thomaz Hair
 
-Página de apresentação da **Papel e Sonhos Informática** — cartão de visita digital com contatos, pagamento Pix, WiFi, catálogo de serviços e QR Code.
+Cartão de visita digital do salão em **Magé/RJ** — serviços, portfólio, depoimentos e pagamento Pix em um único link.
 
-**[Acessar o Site](https://papel-e-sonhos-connect.vercel.app/)**
+**[Acessar o Site](https://studio-sidlaine-thomaz-hair-connect.vercel.app/)**
 
 ---
 
 ## Preview
 
 <p align="center">
-  <img src="assets/img/preview.png" alt="Preview do site" width="25%">
+  <img src="assets/img/logo.jpeg" alt="Logo Studio Sidlaine Thomaz Hair" width="30%">
 </p>
 
+> *"Beleza que transforma"* — Realçando sua beleza com alisamentos que transformam, com técnica, cuidado e muito amor.
+
 ---
 
-## Funcionalidades
+## O que tem dentro
 
-| Botão | O que faz |
-|-------|-----------|
-| Avalie no Google | Abre a página de avaliação no Google |
-| WhatsApp | Inicia conversa direto com a loja |
-| Instagram | Acessa o perfil da loja |
-| Facebook | Acessa a página no Facebook |
+| Bloco | Como funciona |
+|-------|---------------|
+| Avalie no Google | Abre a página de avaliação do salão |
+| WhatsApp | Conversa direto pelo número do estúdio |
+| Instagram / Facebook | Acompanhe as atualizações |
 | Localização | Abre o endereço no Google Maps |
-| Pix | Exibe a chave Pix com opção de copiar |
-| WiFi Grátis | Mostra rede e senha, com opção de conectar |
-| QR Code | Gera QR Code para compartilhar o site |
-| Nossos Serviços | Lista de serviços por categoria (accordion) |
+| Nossos Serviços | Accordion com alisamentos, luzes, corte, escova, queratina, apliques e crescimento capilar |
 | Catálogo de Serviços | Carrossel de imagens e vídeos dos trabalhos |
+| Depoimentos | Vídeos em carrossel — termina um, o próximo entra sozinho |
+| Tela cheia | Visualizador com play, volume, setas e avanço automático |
+| Pix | Copia a chave (Nubank, nome: Sidlaine Thomaz Nascimento) ou escolhe o banco |
+| Escolha seu banco | Detecta os apps bancários instalados no celular |
+| WiFi Grátis | Rede `SIDILAINE_THOMAZ-5G` com senha e botão "Conectar Agora" |
+| QR Code | Gera QR Code da página para compartilhar |
+| Acessibilidade | Tema claro/escuro, alto contraste e VLibras |
+| PWA | Instala como aplicativo no celular |
 
 ---
 
-## Como Usar
+## Como Rodar
 
-**Abrir no navegador:**
-Dê duplo clique em `index.html`.
+Abrir direto no navegador:
 
-**Rodar com servidor local:**
+```
+duplo clique em index.html
+```
+
+Ou com servidor local:
+
 ```bash
 python -m http.server 8000
 ```
+
 Acesse `http://localhost:8000`
 
 ---
 
 ## Como Personalizar
 
-Edite o objeto `CONFIG` no arquivo `assets/js/script.js`:
+Tudo mora no topo de `assets/js/script.js`:
 
 ```javascript
 const CONFIG = {
     pixKey: '+5521988593392',
     whatsappPhone: '5521988593392',
-    googleReviewUrl: 'https://...',
-    instagramUrl: 'https://...',
-    facebookUrl: 'https://...',
-    pageUrl: 'https://...',
-    wifiPassword: 'sua_senha',
-    wifiSSID: 'NomeDaRede',
+    googleReviewUrl: 'https://g.page/r/.../review',
+    instagramUrl: 'https://www.instagram.com/thomazsidlaine',
+    facebookUrl: 'https://www.facebook.com/sidlaine.thomaz',
+    pageUrl: 'https://studio-sidlaine-thomaz-hair-connect.vercel.app/',
+    wifiPassword: 'sidy1206',
+    wifiSSID: 'SIDILAINE_THOMAZ-5G',
 };
 ```
 
-Salve e recarregue o navegador.
+**Trocar os vídeos:**
+
+```javascript
+const CATALOG_MEDIA = [ /* vídeos do catálogo */ ];
+
+const TESTIMONIALS_MEDIA = [
+    { type: 'video', src: 'assets/media/videos/depo 1.mp4' },
+    { type: 'video', src: 'assets/media/videos/depo 2.mp4' },
+];
+```
+
+Salve, recarregue e pronto.
 
 ---
 
@@ -69,23 +91,21 @@ Salve e recarregue o navegador.
 
 ```
 ├── index.html              ← Página principal
-├── style.css               ← Estilos
+├── style.css               ← Estilos e temas
 ├── assets/
-│   ├── js/script.js        ← Lógica e configurações
-│   ├── img/                ← Imagens (logo, ícones, gifs)
-│   └── media/              ← Catálogo (imagens e vídeos)
-├── manifest.json           ← Configuração PWA
+│   ├── js/script.js        ← Lógica, CONFIG e mídias
+│   ├── img/                ← Logo, ícones e gifs
+│   └── media/videos/       ← Catálogo + depoimentos (depo 1, depo 2)
+├── manifest.json           ← PWA
 ├── vercel.json             ← Deploy na Vercel
-├── .htaccess               ← Config Apache
-├── robots.txt              ← SEO
-└── sitemap.xml             ← SEO
+├── .htaccess / web.config  ← Apache e IIS
+├── robots.txt / sitemap.xml ← SEO
 ```
 
 ---
 
 ## Deploy
 
-**Vercel (recomendado):**
 1. Conecte o repositório ao [vercel.com](https://vercel.com)
 2. Clique em **Deploy**
 
@@ -93,18 +113,20 @@ Salve e recarregue o navegador.
 
 ## Tecnologias
 
-- HTML5 / CSS3 / JavaScript (vanilla)
+- HTML5 / CSS3 / JavaScript (sem framework)
 - [Font Awesome 6](https://fontawesome.com/) — Ícones
-- [QRCode.js](https://github.com/davidshimjs/qrcodejs) — Geração de QR Code
+- [QRCode.js](https://github.com/davidshimjs/qrcodejs) — QR Code
+- [VLibras](https://vlibras.gov.br/) — Tradução de Libras
 
 ---
 
 ## Contato
 
-- **WhatsApp:** [+55 21 98859-3392](https://wa.me/5521988593392)
-- **Instagram:** [@papel_e_sonhos0504](https://www.instagram.com/papel_e_sonhos0504/)
+- **WhatsApp:** [+55 21 98717-2463](https://wa.me/5521987172463)
+- **Pix / WhatsApp comercial:** [+55 21 98859-3392](https://wa.me/5521988593392)
+- **Instagram:** [@thomazsidlaine](https://www.instagram.com/thomazsidlaine)
 - **Facebook:** [sidlaine.thomaz](https://www.facebook.com/sidlaine.thomaz)
-- **LinkedIn:** [Thiago Vieira](https://www.linkedin.com/in/thiago-vieira-29b972150/)
+- **Local:** Magé — RJ
 
 ---
 

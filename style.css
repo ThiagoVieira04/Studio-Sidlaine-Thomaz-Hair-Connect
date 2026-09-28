@@ -523,11 +523,8 @@ body {
 .testimonials-header-icon {
     width: 36px;
     height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: var(--color-primary-blue);
+    object-fit: contain;
+    border-radius: 8px;
     flex-shrink: 0;
     animation: iconSway 4s ease-in-out infinite;
 }
@@ -773,7 +770,10 @@ body {
 .location-btn .button-icon { background: transparent; animation-delay: 1.2s; }
 .pix-btn .button-icon { background: #000; color: var(--primary-dark); animation-delay: 1.5s; }
 .wifi-btn .button-icon { background: linear-gradient(135deg, #3498db, #2980b9); color: #fff; animation-delay: 1.8s; }
-.qrcode-btn .button-icon { background: linear-gradient(135deg, var(--color-primary-blue), var(--color-primary-blue-light)); }
+.qrcode-btn .button-icon { background: linear-gradient(135deg, var(--color-primary-blue), var(--color-primary-blue-light)); color: #fff; animation-delay: 2.1s; }
+.bio-btn .button-icon { background: linear-gradient(135deg, #ff4d94, #e6327a); color: #fff; animation-delay: 0.15s; }
+.bio-btn .button-icon-img { border-radius: 10px; animation: none; }
+.bio-modal .action-btn { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 20px 0 0; text-decoration: none; }
 
 /* Destaque: anel pulsante no Avalie no Google */
 @property --google-ring-angle {
@@ -931,6 +931,65 @@ body {
     text-align: center;
     font-weight: 700;
 }
+
+/* --------------------------------------------------------------------------
+   10a. MODAL: Biografia
+   -------------------------------------------------------------------------- */
+
+.bio-modal .modal-content {
+    max-width: 520px;
+    max-height: 86vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.bio-modal .modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.bio-modal .modal-content::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.45);
+    border-radius: 3px;
+}
+
+.bio-text p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--gray-dark);
+    margin-bottom: 14px;
+    text-align: left;
+}
+
+.bio-text p:last-child {
+    margin-bottom: 0;
+}
+
+.bio-text .bio-lead {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-primary-blue);
+    border-left: 4px solid var(--accent-yellow);
+    padding-left: 12px;
+}
+
+body.dark-theme .bio-text .bio-lead {
+    color: var(--color-primary-blue-light);
+}
+
+body.high-contrast .bio-text .bio-lead {
+    color: #fff !important;
+    border-left-color: var(--accent-yellow);
+}
+
+.bio-text .bio-signature {
+    font-style: italic;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(128, 128, 128, 0.35);
+}
+
 
 /* --------------------------------------------------------------------------
    10b. MODAL: Media Viewer
@@ -1766,6 +1825,7 @@ body.dark-theme .background-gradient {
     .footer { padding: 26px 20px; }
     .modal-content { padding: 32px 22px; max-width: 85%; }
     .services-header-icon { width: 34px; height: 34px; }
+    .testimonials-header-icon { width: 34px; height: 34px; }
     .services-list { padding: 0 16px 10px; }
     .service-category-items { padding: 4px 0 0 22px; }
 }
@@ -1883,6 +1943,7 @@ body.dark-theme .background-gradient {
     .service-quote-btn { font-size: 8px; padding: 3px 7px; gap: 3px; }
     .service-quote-btn i { font-size: 10px; }
     .services-header-icon { width: 30px; height: 30px; }
+    .testimonials-header-icon { width: 30px; height: 30px; }
     .catalog-slide img,
     .catalog-slide video { max-height: 220px; }
     .video-controls { gap: 8px; padding: 8px 10px; }

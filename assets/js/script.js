@@ -12,7 +12,7 @@ const CONFIG = {
     googleReviewUrl: 'https://g.page/r/CXUQrjKh4lJtEAE/review',
     instagramUrl: 'https://www.instagram.com/thomazsidlaine?stkn=MW5yNGI1ZWUyaGZweA%3D%3D&utm_source=qr',
     facebookUrl: 'https://www.facebook.com/sidlaine.thomaz',
-    pageUrl: 'https://papel-e-sonhos-connect.vercel.app/',
+    pageUrl: 'https://studio-sidlaine-thomaz-hair-connect.vercel.app/',
     wifiPassword: 'sidy1206',
     wifiSSID: 'SIDILAINE_THOMAZ-5G',
 };
@@ -90,6 +90,7 @@ const TESTIMONIALS_MEDIA = [
 
 const DOM = {
     pixModal: document.getElementById('pixModal'),
+    bioModal: document.getElementById('bioModal'),
     qrcodeModal: document.getElementById('qrcodeModal'),
     wifiModal: document.getElementById('wifiModal'),
     bankModal: document.getElementById('bankModal'),
@@ -186,6 +187,7 @@ function handleButtonClick(e) {
 
     const actions = {
         'open-link': () => openLink(link),
+        'bio-modal': () => openBiografiaModal(),
         'pix-modal': () => openPixModal(),
         'qrcode-modal': () => openQRCodeModal(),
         'wifi-modal': () => openWiFiModal(),
@@ -848,6 +850,15 @@ function openWiFiModal() {
     if (closeBtn) closeBtn.focus();
 }
 
+function openBiografiaModal() {
+    if (!DOM.bioModal) return;
+    closeAllModals();
+    DOM.bioModal.classList.add('active');
+    scrollToTop();
+    const closeBtn = DOM.bioModal.querySelector('.modal-close');
+    if (closeBtn) closeBtn.focus();
+}
+
 function openBankModal() {
     closeAllModals();
     DOM.bankModal.classList.add('active');
@@ -896,7 +907,7 @@ function downloadQRCode() {
 
     const link = document.createElement('a');
     link.href = canvas.toDataURL('image/png');
-    link.download = 'papel-e-sonhos-qrcode.png';
+    link.download = 'studio-sidlaine-thomaz-qrcode.png';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
