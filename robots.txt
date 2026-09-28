@@ -1,0 +1,5 @@
+# robots.txt para Papel e Sonhos Informática
+User-agent: *
+Allow: /
+
+Sitemap: https://papel-e-sonhos-connect.vercel.app/sitemap.xml

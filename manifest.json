@@ -1,0 +1,21 @@
+{
+  "name": "Studio Sidlaine Thomaz Hair",
+  "short_name": "Studio Sidlaine",
+  "description": "Cabelo, beleza e transformação em Magé/RJ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0a2463",
+  "icons": [
+    {
+      "src": "assets/img/logo.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "assets/img/logo.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
