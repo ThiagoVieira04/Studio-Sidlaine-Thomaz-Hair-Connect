@@ -769,12 +769,9 @@ body {
 .facebook-btn .button-icon { background: linear-gradient(135deg, #1877f2, #1051e5); animation-delay: 0.9s; }
 .location-btn .button-icon { background: transparent; animation-delay: 1.2s; }
 .pix-btn .button-icon { background: #000; color: var(--primary-dark); animation-delay: 1.5s; }
-.pix-btn .button-icon-img { border-radius: 10px; animation: none; }
 .wifi-btn .button-icon { background: linear-gradient(135deg, #3498db, #2980b9); color: #fff; animation-delay: 1.8s; }
-.qrcode-btn .button-icon { background: linear-gradient(135deg, var(--color-primary-blue), var(--color-primary-blue-light)); color: #fff; animation-delay: 2.1s; }
 .bio-btn .button-icon { background: linear-gradient(135deg, #ff4d94, #e6327a); color: #fff; animation-delay: 0.15s; }
 .bio-btn .button-icon-img { border-radius: 10px; animation: none; }
-.bio-modal .action-btn { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 20px 0 0; text-decoration: none; }
 
 /* Destaque: anel pulsante no Avalie no Google */
 @property --google-ring-angle {
