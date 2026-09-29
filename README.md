@@ -29,7 +29,7 @@ Cartão de visita digital do salão em **Magé/RJ** — serviços, portfólio, d
 | Depoimentos | Vídeos em carrossel — termina um, o próximo entra sozinho |
 | Tela cheia | Visualizador com play, volume, setas e avanço automático |
 | Pix | Copia a chave (Nubank, nome: Sidlaine Thomaz Nascimento) ou escolhe o banco |
-| Escolha seu banco | Detecta os apps bancários instalados no celular |
+| Escolha seu banco | Abre o app do banco direto no celular, com fallback para a loja de aplicativos |
 | WiFi Grátis | Rede `SIDILAINE_THOMAZ-5G` com senha e botão "Conectar Agora" |
 | QR Code | Gera QR Code da página para compartilhar |
 | Acessibilidade | Tema claro/escuro, alto contraste e VLibras |

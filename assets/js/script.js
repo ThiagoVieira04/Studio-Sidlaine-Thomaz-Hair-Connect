@@ -18,22 +18,22 @@ const CONFIG = {
 };
 
 const BANKS = [
-    { name: 'Nubank', scheme: 'nubank://', intent: 'intent://open#Intent;scheme=nubank;package=com.nu.production;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.nu.production;end', playStore: 'https://play.google.com/store/apps/details?id=com.nu.production', appStore: 'https://apps.apple.com/app/nubank/id814456780', color: 'linear-gradient(135deg, #820AD1, #530082)', initials: 'Nu', domain: 'nubank.com.br' },
-    { name: 'Itaú', scheme: 'itau://', intent: 'intent://open#Intent;scheme=itau;package=com.itau;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.itau;end', playStore: 'https://play.google.com/store/apps/details?id=com.itau', appStore: 'https://apps.apple.com/app/itau-personal/id474505665', color: 'linear-gradient(135deg, #FF7A00, #EC5E00)', initials: 'Itaú', domain: 'itau.com.br' },
-    { name: 'Bradesco', scheme: 'bradesco://', intent: 'intent://open#Intent;scheme=bradesco;package=com.bradesco;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.bradesco;end', playStore: 'https://play.google.com/store/apps/details?id=com.bradesco', appStore: 'https://apps.apple.com/app/bradesco/id336954985', color: 'linear-gradient(135deg, #CC092F, #E60042)', initials: 'Brad', domain: 'bradesco.com.br' },
-    { name: 'Banco do Brasil', scheme: 'bb://', intent: 'intent://open#Intent;scheme=bb;package=br.com.bb.android;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dbr.com.bb.android;end', playStore: 'https://play.google.com/store/apps/details?id=br.com.bb.android', appStore: 'https://apps.apple.com/app/banco-do-brasil/id330984271', color: 'linear-gradient(135deg, #F2E307, #003399)', initials: 'BB', domain: 'bb.com.br' },
-    { name: 'Caixa', scheme: 'caixa://', intent: 'intent://open#Intent;scheme=caixa;package=br.com.gabba.Caixa;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dbr.com.gabba.Caixa;end', playStore: 'https://play.google.com/store/apps/details?id=br.com.gabba.Caixa', appStore: 'https://apps.apple.com/app/caixa/id490813624', color: 'linear-gradient(135deg, #005CA9, #F58220)', initials: 'CX', domain: 'caixa.gov.br' },
-    { name: 'Santander', scheme: 'santander://', intent: 'intent://open#Intent;scheme=santander;package=com.santander.app;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.santander.app;end', playStore: 'https://play.google.com/store/apps/details?id=com.santander.app', appStore: 'https://apps.apple.com/app/santander/id613365711', color: 'linear-gradient(135deg, #EC0000, #B30000)', initials: 'San', domain: 'santander.com.br' },
-    { name: 'Inter', scheme: 'bancointer://', intent: 'intent://open#Intent;scheme=bancointer;package=br.com.intermedium;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dbr.com.intermedium;end', playStore: 'https://play.google.com/store/apps/details?id=br.com.intermedium', appStore: 'https://apps.apple.com/app/inter/id839711154', color: 'linear-gradient(135deg, #FF7A00, #FF5500)', initials: 'Inter', domain: 'bancointer.com.br' },
-    { name: 'PagBank', scheme: 'pagseguro://', intent: 'intent://open#Intent;scheme=pagseguro;package=br.com.uol.ps.myaccount;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dbr.com.uol.ps.myaccount;end', playStore: 'https://play.google.com/store/apps/details?id=br.com.uol.ps.myaccount', appStore: 'https://apps.apple.com/app/pagbank/id1186059012', color: 'linear-gradient(135deg, #00C69E, #BFE02C)', initials: 'Pag', domain: 'pagbank.com.br' },
-    { name: 'Mercado Pago', scheme: 'mercadopago://', intent: 'intent://open#Intent;scheme=mercadopago;package=com.mercadopago.wallet;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.mercadopago.wallet;end', playStore: 'https://play.google.com/store/apps/details?id=com.mercadopago.wallet', appStore: 'https://apps.apple.com/app/mercado-pago/id925436649', color: 'linear-gradient(135deg, #00B1EA, #00A650)', initials: 'MP', domain: 'mercadopago.com.br' },
-    { name: 'PicPay', scheme: 'picpay://', intent: 'intent://open#Intent;scheme=picpay;package=com.picpay;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.picpay;end', playStore: 'https://play.google.com/store/apps/details?id=com.picpay', appStore: 'https://apps.apple.com/app/picpay/id561524792', color: 'linear-gradient(135deg, #21C25E, #117F3D)', initials: 'Pic', domain: 'picpay.com' },
-    { name: 'Sicredi', scheme: 'sicredi://', intent: 'intent://open#Intent;scheme=sicredi;package=br.com.sicredimobi.smart;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dbr.com.sicredimobi.smart;end', playStore: 'https://play.google.com/store/apps/details?id=br.com.sicredimobi.smart', appStore: 'https://apps.apple.com/app/sicredi/id1041468908', color: 'linear-gradient(135deg, #3EA124, #66BB3F)', initials: 'Sic', domain: 'sicredi.com.br' },
-    { name: 'Sicoob', scheme: 'sicoob://', intent: 'intent://open#Intent;scheme=sicoob;package=br.com.sicoobnet;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dbr.com.sicoobnet;end', playStore: 'https://play.google.com/store/apps/details?id=br.com.sicoobnet', appStore: 'https://apps.apple.com/app/sicoob/id416696406', color: 'linear-gradient(135deg, #00363A, #005F60)', initials: 'Sic', domain: 'sicoob.com.br' },
-    { name: 'BTG Pactual', scheme: 'btg://', intent: 'intent://open#Intent;scheme=btg;package=com.btg.pactual.banking;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.btg.pactual.banking;end', playStore: 'https://play.google.com/store/apps/details?id=com.btg.pactual.banking', appStore: 'https://apps.apple.com/app/btg-pactual/id1467956990', color: 'linear-gradient(135deg, #0B2343, #000B1A)', initials: 'BTG', domain: 'btgpactual.com' },
-    { name: 'C6 Bank', scheme: 'c6bank://', intent: 'intent://open#Intent;scheme=c6bank;package=com.c6bank.app;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.c6bank.app;end', playStore: 'https://play.google.com/store/apps/details?id=com.c6bank.app', appStore: 'https://apps.apple.com/app/c6-bank/id1463463143', color: 'linear-gradient(135deg, #1E1E1E, #000)', initials: 'C6', domain: 'c6bank.com.br' },
-    { name: 'Neon', scheme: 'neon://', intent: 'intent://open#Intent;scheme=neon;package=br.com.neon;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dbr.com.neon;end', playStore: 'https://play.google.com/store/apps/details?id=br.com.neon', appStore: 'https://apps.apple.com/app/neon-cart%C3%A3o/id1127996388', color: 'linear-gradient(135deg, #00E5FF, #0055FF)', initials: 'Neon', domain: 'neon.com.br' },
-    { name: 'Banrisul', scheme: 'banrisul://', intent: 'intent://open#Intent;scheme=banrisul;package=br.com.banrisul;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dbr.com.banrisul;end', playStore: 'https://play.google.com/store/apps/details?id=br.com.banrisul', appStore: 'https://apps.apple.com/app/banrisul/id1177452393', color: 'linear-gradient(135deg, #00519E, #0076D6)', initials: 'Ban', domain: 'banrisul.com.br' },
+    { name: 'Nubank', scheme: 'nubank://', appLink: true, playStore: 'https://play.google.com/store/apps/details?id=com.nu.production', appStore: 'https://apps.apple.com/app/nubank/id814456780', color: 'linear-gradient(135deg, #820AD1, #530082)', initials: 'Nu', domain: 'nubank.com.br' },
+    { name: 'Itaú', scheme: 'itau://', appLink: true, playStore: 'https://play.google.com/store/apps/details?id=com.itau', appStore: 'https://apps.apple.com/app/itau-personal/id474505665', color: 'linear-gradient(135deg, #FF7A00, #EC5E00)', initials: 'Itaú', domain: 'itau.com.br' },
+    { name: 'Bradesco', scheme: 'bradesco://', appLink: true, playStore: 'https://play.google.com/store/apps/details?id=com.bradesco', appStore: 'https://apps.apple.com/app/bradesco/id336954985', color: 'linear-gradient(135deg, #CC092F, #E60042)', initials: 'Brad', domain: 'bradesco.com.br' },
+    { name: 'Banco do Brasil', scheme: 'bb://', appLink: true, playStore: 'https://play.google.com/store/apps/details?id=br.com.bb.android', appStore: 'https://apps.apple.com/app/banco-do-brasil/id330984271', color: 'linear-gradient(135deg, #F2E307, #003399)', initials: 'BB', domain: 'bb.com.br' },
+    { name: 'Caixa', scheme: 'caixa://', playStore: 'https://play.google.com/store/apps/details?id=br.com.gabba.Caixa', appStore: 'https://apps.apple.com/app/caixa/id490813624', color: 'linear-gradient(135deg, #005CA9, #F58220)', initials: 'CX', domain: 'caixa.gov.br' },
+    { name: 'Santander', scheme: 'santanderpf://', playStore: 'https://play.google.com/store/apps/details?id=com.santander.app', appStore: 'https://apps.apple.com/app/santander/id613365711', color: 'linear-gradient(135deg, #EC0000, #B30000)', initials: 'San', domain: 'santander.com.br' },
+    { name: 'Inter', scheme: 'bancointer://', appLink: true, playStore: 'https://play.google.com/store/apps/details?id=br.com.intermedium', appStore: 'https://apps.apple.com/app/inter/id839711154', color: 'linear-gradient(135deg, #FF7A00, #FF5500)', initials: 'Inter', domain: 'bancointer.com.br' },
+    { name: 'PagBank', scheme: 'pagseguro://', appLink: true, playStore: 'https://play.google.com/store/apps/details?id=br.com.uol.ps.myaccount', appStore: 'https://apps.apple.com/app/pagbank/id1186059012', color: 'linear-gradient(135deg, #00C69E, #BFE02C)', initials: 'Pag', domain: 'pagbank.com.br' },
+    { name: 'Mercado Pago', scheme: 'mercadopago://', appLink: true, playStore: 'https://play.google.com/store/apps/details?id=com.mercadopago.wallet', appStore: 'https://apps.apple.com/app/mercado-pago/id925436649', color: 'linear-gradient(135deg, #00B1EA, #00A650)', initials: 'MP', domain: 'mercadopago.com.br' },
+    { name: 'PicPay', scheme: 'picpay://', appLink: true, playStore: 'https://play.google.com/store/apps/details?id=com.picpay', appStore: 'https://apps.apple.com/app/picpay/id561524792', color: 'linear-gradient(135deg, #21C25E, #117F3D)', initials: 'Pic', domain: 'picpay.com' },
+    { name: 'Sicredi', scheme: 'sicredi://', appLink: true, playStore: 'https://play.google.com/store/apps/details?id=br.com.sicredimobi.smart', appStore: 'https://apps.apple.com/app/sicredi/id1041468908', color: 'linear-gradient(135deg, #3EA124, #66BB3F)', initials: 'Sic', domain: 'sicredi.com.br' },
+    { name: 'Sicoob', scheme: 'sicoob://', playStore: 'https://play.google.com/store/apps/details?id=br.com.sicoobnet', appStore: 'https://apps.apple.com/app/sicoob/id416696406', color: 'linear-gradient(135deg, #00363A, #005F60)', initials: 'Sic', domain: 'sicoob.com.br' },
+    { name: 'BTG Pactual', scheme: 'btg://', playStore: 'https://play.google.com/store/apps/details?id=com.btg.pactual.banking', appStore: 'https://apps.apple.com/app/btg-pactual/id1467956990', color: 'linear-gradient(135deg, #0B2343, #000B1A)', initials: 'BTG', domain: 'btgpactual.com' },
+    { name: 'C6 Bank', scheme: 'c6bank://', playStore: 'https://play.google.com/store/apps/details?id=com.c6bank.app', appStore: 'https://apps.apple.com/app/c6-bank/id1463463143', color: 'linear-gradient(135deg, #1E1E1E, #000)', initials: 'C6', domain: 'c6bank.com.br' },
+    { name: 'Neon', scheme: 'neon://', playStore: 'https://play.google.com/store/apps/details?id=br.com.neon', appStore: 'https://apps.apple.com/app/neon-cart%C3%A3o/id1127996388', color: 'linear-gradient(135deg, #00E5FF, #0055FF)', initials: 'Neon', domain: 'neon.com.br' },
+    { name: 'Banrisul', scheme: 'banrisul://', playStore: 'https://play.google.com/store/apps/details?id=br.com.banrisul', appStore: 'https://apps.apple.com/app/banrisul/id1177452393', color: 'linear-gradient(135deg, #00519E, #0076D6)', initials: 'Ban', domain: 'banrisul.com.br' },
 ];
 
 /* --------------------------------------------------------------------------
@@ -998,13 +998,26 @@ function handleBankRedirect(bank) {
         if (isInAppBrowser()) {
             openWithSchemeFallback(bank.scheme, bank.playStore, bank.name, 'playstore');
         } else {
-            triggerIntent(bank.intent);
+            triggerIntent(buildBankIntent(bank));
         }
     } else if (isIOS) {
         openWithSchemeFallback(bank.scheme, bank.appStore, bank.name, 'appstore');
     } else {
         window.location.href = bank.playStore;
     }
+}
+
+function buildBankIntent(bank) {
+    const pkgMatch = bank.playStore.match(/[?&]id=([^&]+)/);
+    const pkg = pkgMatch ? pkgMatch[1] : '';
+    const fallback = encodeURIComponent(bank.playStore);
+
+    if (bank.appLink) {
+        return `intent://${bank.domain}/#Intent;action=android.intent.action.VIEW;scheme=https;package=${pkg};S.browser_fallback_url=${fallback};end`;
+    }
+
+    const scheme = bank.scheme.replace(/^([a-z0-9]+):\/\/$/i, '$1');
+    return `intent://open#Intent;scheme=${scheme};package=${pkg};S.browser_fallback_url=${fallback};end`;
 }
 
 function triggerIntent(url) {
