@@ -948,6 +948,10 @@ function detectPlatform() {
     };
 }
 
+function isInAppBrowser() {
+    return /FBAN|FBAV|Instagram|WhatsApp|Line\/|MicroMessenger|Twitter|; wv\)/i.test(navigator.userAgent);
+}
+
 function renderBankGrid() {
     DOM.bankGridList.innerHTML = '';
     const { isAndroid, isIOS } = detectPlatform();
@@ -978,7 +982,7 @@ function updateBankNotice(isMobile) {
         DOM.bankNotice.innerHTML = '<i class="fas fa-info-circle"></i> Toque em um banco para abrir o app. A chave Pix será copiada automaticamente.';
         DOM.bankNotice.style.cssText = 'background:rgba(33,194,94,0.15);color:#21c25e;border-color:rgba(33,194,94,0.3)';
     } else {
-        DOM.bankNotice.innerHTML = '<i class="fas fa-info-circle"></i> No celular, o app abre direto. Aqui você será redirecionado ao site do banco.';
+        DOM.bankNotice.innerHTML = '<i class="fas fa-info-circle"></i> No celular, o app abre direto. Aqui você vai para a loja do aplicativo.';
         DOM.bankNotice.style.cssText = 'background:rgba(255,193,7,0.15);color:#ffc107;border-color:rgba(255,193,7,0.3)';
     }
 }
@@ -992,16 +996,15 @@ function handleBankRedirect(bank) {
     setTimeout(closeAllModals, 300);
 
     if (isAndroid) {
-        triggerIntent(bank.intent);
+        if (isInAppBrowser()) {
+            openWithSchemeFallback(bank.scheme, bank.playStore, bank.name, 'playstore');
+        } else {
+            triggerIntent(bank.intent);
+        }
     } else if (isIOS) {
-        triggerIntent(bank.scheme);
+        openWithSchemeFallback(bank.scheme, bank.appStore, bank.name, 'appstore');
     } else {
-        window.location.href = bank.scheme;
-        setTimeout(() => {
-            if (document.visibilityState === 'visible') {
-                window.location.href = bank.playStore;
-            }
-        }, 2000);
+        window.location.href = bank.playStore;
     }
 }
 
@@ -1012,6 +1015,37 @@ function triggerIntent(url) {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+}
+
+function openWithSchemeFallback(scheme, storeUrl, bankName, storeType) {
+    let appOpened = false;
+
+    function handleAppOpened() {
+        appOpened = true;
+        cleanup();
+    }
+
+    function handleVisibility() {
+        if (document.visibilityState === 'hidden') handleAppOpened();
+    }
+
+    function cleanup() {
+        window.removeEventListener('blur', handleAppOpened);
+        document.removeEventListener('visibilitychange', handleVisibility);
+    }
+
+    window.addEventListener('blur', handleAppOpened);
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    window.location.href = scheme;
+
+    setTimeout(() => {
+        cleanup();
+        if (appOpened || document.visibilityState !== 'visible') return;
+        trackEvent('bank_fallback_used', { bankName, storeType });
+        showToast('App não instalado — abrindo a loja...', 'info');
+        window.location.href = storeUrl;
+    }, 2000);
 }
 
 function copyPixKeySilent() {
