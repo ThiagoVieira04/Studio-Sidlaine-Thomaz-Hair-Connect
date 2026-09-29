@@ -8,8 +8,6 @@
 
 const CONFIG = {
     pixKey: '+5521988593392',
-    pixName: 'Sidlaine Thomaz Nascimento',
-    pixCity: 'MAGE',
     whatsappPhone: '5521988593392',
     googleReviewUrl: 'https://g.page/r/CXUQrjKh4lJtEAE/review',
     instagramUrl: 'https://www.instagram.com/thomazsidlaine?stkn=MW5yNGI1ZWUyaGZweA%3D%3D&utm_source=qr',
@@ -99,13 +97,6 @@ const DOM = {
     linkButtons: document.querySelectorAll('.link-button'),
     modalCloseButtons: document.querySelectorAll('.modal-close'),
     copyPixBtn: document.getElementById('copyPixBtn'),
-    pixAmount: document.getElementById('pixAmount'),
-    pixName: document.getElementById('pixName'),
-    pixReference: document.getElementById('pixReference'),
-    pixQRCode: document.getElementById('pixQRCode'),
-    pixCodeDisplay: document.getElementById('pixCodeDisplay'),
-    copyPixCodeBtn: document.getElementById('copyPixCodeBtn'),
-    downloadPixQRBtn: document.getElementById('downloadPixQRBtn'),
     downloadQRBtn: document.getElementById('downloadQRBtn'),
     copyWifiBtn: document.getElementById('copyWifiBtn'),
     connectWifiBtn: document.getElementById('connectWifiBtn'),
@@ -164,11 +155,6 @@ function initEventListeners() {
     });
 
     if (DOM.copyPixBtn) DOM.copyPixBtn.addEventListener('click', copyPixKey);
-    if (DOM.copyPixCodeBtn) DOM.copyPixCodeBtn.addEventListener('click', copyPixCode);
-    if (DOM.downloadPixQRBtn) DOM.downloadPixQRBtn.addEventListener('click', downloadPixQRCode);
-    [DOM.pixAmount, DOM.pixName, DOM.pixReference].forEach(field => {
-        if (field) field.addEventListener('input', generatePixCode);
-    });
     if (DOM.downloadQRBtn) DOM.downloadQRBtn.addEventListener('click', downloadQRCode);
     if (DOM.copyWifiBtn) DOM.copyWifiBtn.addEventListener('click', copyWifiPassword);
     if (DOM.connectWifiBtn) DOM.connectWifiBtn.addEventListener('click', openWifiSettings);
@@ -703,23 +689,10 @@ function fallbackCopy(text, successMsg) {
 }
 
 function copyPixKey() {
-    const hasAmount = !!getEnteredPixAmount();
-    copyToClipboard(getPixCopyText(), hasAmount ? 'Código Pix copiado!' : 'Chave Pix copiada!').then(() => {
+    copyToClipboard(CONFIG.pixKey, 'Chave Pix copiada!').then(() => {
         updateButtonLabel(DOM.copyPixBtn, 'Copiado!', '<i class="fas fa-copy"></i> Copiar');
         trackEvent('pix_key_copied', {});
     });
-}
-
-function copyPixCode() {
-    if (!currentPixCode) generatePixCode();
-    copyToClipboard(currentPixCode, 'Código Pix copiado!').then(() => {
-        updateButtonLabel(DOM.copyPixCodeBtn, 'Copiado!', '<i class="fas fa-copy"></i> Copiar código');
-        trackEvent('pix_code_copied', {});
-    });
-}
-
-function getPixCopyText() {
-    return getEnteredPixAmount() ? currentPixCode : CONFIG.pixKey;
 }
 
 function copyWifiPassword() {
@@ -855,7 +828,6 @@ function scrollToTop() {
 function openPixModal() {
     closeAllModals();
     DOM.pixModal.classList.add('active');
-    generatePixCode();
     scrollToTop();
     const closeBtn = DOM.pixModal.querySelector('.modal-close');
     if (closeBtn) closeBtn.focus();
@@ -945,139 +917,6 @@ function downloadQRCode() {
 }
 
 /* --------------------------------------------------------------------------
-   10.1 PIX BR CODE (Copia e Cola)
-   -------------------------------------------------------------------------- */
-
-let currentPixCode = '';
-
-function emvField(id, value) {
-    const text = String(value);
-    return id + String(text.length).padStart(2, '0') + text;
-}
-
-function crc16Pix(payload) {
-    let crc = 0xFFFF;
-    for (let i = 0; i < payload.length; i++) {
-        crc ^= payload.charCodeAt(i) << 8;
-        for (let bit = 0; bit < 8; bit++) {
-            crc = (crc & 0x8000) ? ((crc << 1) ^ 0x1021) & 0xFFFF : (crc << 1) & 0xFFFF;
-        }
-    }
-    return crc.toString(16).toUpperCase().padStart(4, '0');
-}
-
-function sanitizePixText(text, maxLength) {
-    return String(text || '')
-        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-        .replace(/[^A-Za-z0-9 $%*+\-./:]/g, ' ')
-        .replace(/\s+/g, ' ')
-        .trim()
-        .toUpperCase()
-        .slice(0, maxLength);
-}
-
-function sanitizePixTxId(text) {
-    return String(text || '')
-        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-        .replace(/[^A-Za-z0-9]/g, '')
-        .toUpperCase()
-        .slice(0, 25);
-}
-
-function normalizePixKey(key) {
-    const raw = String(key || '').trim();
-    if (/^\+?[\d\s().-]+$/.test(raw)) return raw.replace(/\D/g, '');
-    return raw;
-}
-
-function normalizePixAmount(raw) {
-    let value = String(raw || '').replace(/[R$\s]/g, '');
-    if (!value) return null;
-    if (/^\d{1,3}(\.\d{3})+$/.test(value)) {
-        value = value.replace(/\./g, '');
-    } else if (value.includes(',')) {
-        value = value.replace(/\./g, '').replace(',', '.');
-    }
-    if (!/^\d+(\.\d{1,2})?$/.test(value)) return null;
-    const amount = parseFloat(value);
-    if (!isFinite(amount) || amount <= 0) return null;
-    return amount.toFixed(2);
-}
-
-function getEnteredPixAmount() {
-    return DOM.pixAmount ? normalizePixAmount(DOM.pixAmount.value) : null;
-}
-
-function buildPixPayload({ key, name, city, amount, reference }) {
-    const merchantAccount = emvField('00', 'BR.GOV.BCB.PIX') + emvField('01', key);
-    let payload = emvField('00', '01');
-    if (amount) payload += emvField('01', '12');
-    payload += emvField('26', merchantAccount);
-    payload += emvField('52', '0000');
-    payload += emvField('53', '986');
-    if (amount) payload += emvField('54', amount);
-    payload += emvField('58', 'BR');
-    payload += emvField('59', name);
-    payload += emvField('60', city);
-    if (reference) payload += emvField('62', emvField('05', reference));
-    return payload + '6304' + crc16Pix(payload + '6304');
-}
-
-function generatePixCode() {
-    const amount = getEnteredPixAmount();
-    const name = sanitizePixText(DOM.pixName && DOM.pixName.value, 25) || sanitizePixText(CONFIG.pixName, 25);
-    const city = sanitizePixText(CONFIG.pixCity, 15) || 'MAGE';
-    const reference = sanitizePixTxId(DOM.pixReference && DOM.pixReference.value);
-
-    currentPixCode = buildPixPayload({
-        key: normalizePixKey(CONFIG.pixKey),
-        name,
-        city,
-        amount,
-        reference,
-    });
-
-    if (DOM.pixCodeDisplay) DOM.pixCodeDisplay.value = currentPixCode;
-    renderPixQRCode(currentPixCode);
-}
-
-function renderPixQRCode(text) {
-    const container = DOM.pixQRCode;
-    if (!container || typeof QRCode === 'undefined') return;
-    container.innerHTML = '';
-    try {
-        new QRCode(container, {
-            text,
-            width: 200,
-            height: 200,
-            colorDark: '#0a2463',
-            colorLight: '#ffffff',
-            correctLevel: QRCode.CorrectLevel.M,
-        });
-    } catch {
-        container.innerHTML = '<p class="pix-qr-error">Erro ao gerar QR Code</p>';
-    }
-}
-
-function downloadPixQRCode() {
-    const canvas = DOM.pixQRCode && DOM.pixQRCode.querySelector('canvas');
-    if (!canvas) {
-        showToast('QR Code não gerado', 'error');
-        return;
-    }
-
-    const link = document.createElement('a');
-    link.href = canvas.toDataURL('image/png');
-    link.download = 'pix-studio-sidlaine-thomaz.png';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-    showSuccessMessage('QR Code Pix baixado!');
-    trackEvent('pix_qr_downloaded', {});
-}
-
-/* --------------------------------------------------------------------------
    11. WIFI
    -------------------------------------------------------------------------- */
 
@@ -1136,7 +975,7 @@ function renderBankGrid() {
 
 function updateBankNotice(isMobile) {
     if (isMobile) {
-        DOM.bankNotice.innerHTML = '<i class="fas fa-info-circle"></i> Toque em um banco para abrir o app. O código Pix será copiado automaticamente.';
+        DOM.bankNotice.innerHTML = '<i class="fas fa-info-circle"></i> Toque em um banco para abrir o app. A chave Pix será copiada automaticamente.';
         DOM.bankNotice.style.cssText = 'background:rgba(33,194,94,0.15);color:#21c25e;border-color:rgba(33,194,94,0.3)';
     } else {
         DOM.bankNotice.innerHTML = '<i class="fas fa-info-circle"></i> No celular, o app abre direto. Aqui você será redirecionado ao site do banco.';
@@ -1149,7 +988,7 @@ function handleBankRedirect(bank) {
     const { isAndroid, isIOS } = detectPlatform();
 
     copyPixKeySilent();
-    showToast(`Pix copiado! Abrindo ${bank.name}...`, 'success');
+    showToast(`Chave Pix copiada! Abrindo ${bank.name}...`, 'success');
     setTimeout(closeAllModals, 300);
 
     if (isAndroid) {
@@ -1176,11 +1015,10 @@ function triggerIntent(url) {
 }
 
 function copyPixKeySilent() {
-    const text = getPixCopyText();
     if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).catch(() => {});
+        navigator.clipboard.writeText(CONFIG.pixKey).catch(() => {});
     } else {
-        fallbackCopy(text, null);
+        fallbackCopy(CONFIG.pixKey, null);
     }
 }
 
@@ -1295,8 +1133,6 @@ function initLogoAnimation() {
    -------------------------------------------------------------------------- */
 
 window.copyPixKey = copyPixKey;
-window.copyPixCode = copyPixCode;
-window.generatePixCode = generatePixCode;
 window.downloadQRCode = downloadQRCode;
 window.trackEvent = trackEvent;
 window.getAnalytics = () => JSON.parse(localStorage.getItem('pageEvents') || '[]');

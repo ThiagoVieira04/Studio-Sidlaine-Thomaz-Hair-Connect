@@ -180,39 +180,6 @@
         <div class="modal-content pix-modal-content">
             <button class="modal-close" aria-label="Fechar modal">&times;</button>
             <h2 id="pixModalTitle">Pague com Pix</h2>
-
-            <div class="pix-payment-section">
-                <p class="pix-key-label">Gerar QR Code Pix</p>
-                <div class="pix-payment-form">
-                    <div class="pix-form-field pix-field-amount">
-                        <label for="pixAmount">Valor (R$)</label>
-                        <input type="text" id="pixAmount" inputmode="decimal" placeholder="R$ 0,00" autocomplete="off">
-                    </div>
-                    <div class="pix-form-field pix-field-name">
-                        <label for="pixName">Nome do recebedor</label>
-                        <input type="text" id="pixName" value="Sidlaine Thomaz Nascimento" autocomplete="off">
-                    </div>
-                    <div class="pix-form-field pix-field-ref">
-                        <label for="pixReference">Referência (opcional)</label>
-                        <input type="text" id="pixReference" placeholder="Ex.: Alisamento - Maria" autocomplete="off">
-                    </div>
-                </div>
-
-                <div class="pix-qr-box" id="pixQRCode" aria-label="QR Code Pix gerado"></div>
-
-                <div class="pix-code-box">
-                    <label for="pixCodeDisplay">Pix Copia e Cola</label>
-                    <textarea id="pixCodeDisplay" rows="3" readonly aria-label="Código Pix Copia e Cola"></textarea>
-                    <button class="copy-btn pix-copy-code-btn" id="copyPixCodeBtn" type="button">
-                        <i class="fas fa-copy" aria-hidden="true"></i> Copiar código
-                    </button>
-                </div>
-
-                <button class="action-btn pix-download-btn" id="downloadPixQRBtn" type="button">
-                    <i class="fas fa-download" aria-hidden="true"></i> Baixar QR Code
-                </button>
-            </div>
-
             <div class="pix-key-section">
                 <p class="pix-key-label">Chave Pix (Celular):</p>
                 <div class="pix-key-display">
@@ -224,7 +191,7 @@
             </div>
             <p class="pix-info">
                 <i class="fas fa-info-circle"></i>
-                Copie a chave ou o código Pix gerado acima para fazer o pagamento via Pix.
+                Copie a chave acima para fazer o pagamento via Pix.
             </p>
             <button class="action-btn pix-bank-btn" id="openBankBtn">
                 <i class="fas fa-university"></i> Abrir meu banco
