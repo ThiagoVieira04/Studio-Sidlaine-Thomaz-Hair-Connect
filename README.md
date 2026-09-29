@@ -28,7 +28,7 @@ Cartão de visita digital do salão em **Magé/RJ** — serviços, portfólio, d
 | Catálogo de Serviços | Carrossel de imagens e vídeos dos trabalhos |
 | Depoimentos | Vídeos em carrossel — termina um, o próximo entra sozinho |
 | Tela cheia | Visualizador com play, volume, setas e avanço automático |
-| Pix | Copia a chave (Nubank, nome: Sidlaine Thomaz Nascimento) ou escolhe o banco |
+| Pix | Gerador de QR Code Pix: preencha valor, nome e referência e o site gera o BR Code (Copia e Cola) na hora — ou copia a chave (Nubank, nome: Sidlaine Thomaz Nascimento) e escolhe o banco |
 | Escolha seu banco | Detecta os apps bancários instalados no celular |
 | WiFi Grátis | Rede `SIDILAINE_THOMAZ-5G` com senha e botão "Conectar Agora" |
 | QR Code | Gera QR Code da página para compartilhar |
@@ -62,6 +62,8 @@ Tudo mora no topo de `assets/js/script.js`:
 ```javascript
 const CONFIG = {
     pixKey: '+5521988593392',
+    pixName: 'Sidlaine Thomaz Nascimento',
+    pixCity: 'MAGE',
     whatsappPhone: '5521988593392',
     googleReviewUrl: 'https://g.page/r/.../review',
     instagramUrl: 'https://www.instagram.com/thomazsidlaine',

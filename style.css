@@ -1194,6 +1194,126 @@ body.high-contrast .bio-text .bio-lead {
     color: var(--color-white) !important;
 }
 
+/* Gerador de QR Code Pix (Copia e Cola) */
+
+.pix-payment-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: var(--gray-light);
+    border-radius: var(--radius-md);
+}
+
+.pix-payment-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.pix-form-field {
+    min-width: 0;
+}
+
+.pix-form-field label,
+.pix-code-box label {
+    display: block;
+    font-size: 12px;
+    color: var(--gray-dark);
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 6px;
+}
+
+.pix-form-field input {
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--color-white);
+    border: 2px solid var(--gray-medium);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-gray-900);
+    box-sizing: border-box;
+    transition: var(--transition);
+}
+
+.pix-form-field input:focus {
+    outline: none;
+    border-color: var(--color-primary-blue);
+}
+
+.pix-form-field input::placeholder {
+    color: var(--color-gray-900);
+    opacity: 0.45;
+}
+
+.pix-qr-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+    padding: 15px;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    min-height: 120px;
+}
+
+.pix-qr-box canvas,
+.pix-qr-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+.pix-qr-error {
+    color: #d32f2f;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.pix-code-box textarea {
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--color-white);
+    border: 2px solid var(--gray-medium);
+    border-radius: var(--radius-sm);
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    line-height: 1.4;
+    color: var(--color-gray-900);
+    resize: none;
+    word-break: break-all;
+    box-sizing: border-box;
+}
+
+.pix-code-box textarea:focus {
+    outline: none;
+    border-color: var(--color-primary-blue);
+}
+
+.pix-copy-code-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+    padding: 9px 12px;
+    font-size: 13px;
+}
+
+.pix-download-btn {
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+@media (max-width: 480px) {
+    .pix-payment-section {
+        padding: 12px;
+    }
+
+    .pix-qr-box {
+        padding: 10px;
+    }
+}
+
 /* --------------------------------------------------------------------------
    12. MODAL: QR Code
    -------------------------------------------------------------------------- */
